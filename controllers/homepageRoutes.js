@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
-const withAuth = require('../utils/auth');
+const { Post, User, Comment } = require('../models');
+const authorization = require('../utils/authorization');
 
 router.get("/", async (req, res) => {
     const postData = await Post.findAll({
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     });
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('', {
+    res.render('####name of handlebars####', {
         posts,
         logged_in: req.session.logged_in
     })
@@ -34,7 +34,7 @@ router.get("/post/:id", async (req, res) => {
             ]
         });
         const posts = postData.get({ plain: true });
-        res.render('', {
+        res.render('####name of handlebars####', {
             ...posts,
             logged_in: req.session.logged_in
         });
@@ -43,5 +43,28 @@ router.get("/post/:id", async (req, res) => {
     }
 });
 
+router.get("/login", (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect("/profile");
+        return;
+    }
+    res.render("###name of handlebars###")
+})
 // Route to Profile
-// Route to LoginPage
+
+router.get("/profile", authorization, async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.session.user.id, {
+            include: [{ model: Post }],
+        });
+        const user = userData.get({ plain: true });
+        res.render('####name of handlebars####', {
+            ...user,
+            logged_in: true
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+module.exports = router

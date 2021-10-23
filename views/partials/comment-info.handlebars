@@ -1,0 +1,12 @@
+<div class = "comment">
+{{#each comments as |comment| }}
+<div class="card w-75 border-success mb-3">
+  <div class="card-header bg-white border-success">Created by :{{comment.user.name}} on {{formatDate comment.date_created}}</div>
+  <div class="card-body text-success">
+    <p class="card-text">{{comment.content}}</p>
+  </div>
+   <button class="btn btn-outline-success" type="button" id="button-addon2">Update Comment</button>
+</div>
+{{/each}}
+</div>
+
