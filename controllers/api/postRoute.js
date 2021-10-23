@@ -49,6 +49,11 @@ router.post("?????", authorization, async (req,res)=>{
         const postData = await Post.create({
             ...req.body,
             user_id : req.session.id,
+            include: [
+                {
+                    model: User,
+                    attributes: ["name"],
+                }],
         });
 
         res.status(200).json(postData)
@@ -63,6 +68,11 @@ router.put("?????", authorization, async (req,res)=>{
         const postData = await Post.update({
             ...req.body,
             user_id : req.session.id,
+            include: [
+                {
+                    model: User,
+                    attributes: ["name"],
+                }],
         });
         if (!postData) {
             res.status(404).json({ message: "No post with that id exists." });
@@ -91,3 +101,5 @@ router.delete("?????",authorization, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+module.exports = router
