@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 
         res.render("homepage", {
             posts,
-            logged_in: req.session.logged_in
+            // logged_in: req.session.logged_in
         })
     } catch (err) {
         res.status(500).json(err);
@@ -39,8 +39,8 @@ router.get("/post/:id", async (req, res) => {
         });
         const posts = postData.get({ plain: true });
         res.render("singlepost", {
-            ...posts,
-            logged_in: req.session.logged_in
+            post,
+            // logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
@@ -57,19 +57,19 @@ router.get("/login", (req, res) => {
 // Route to Profile
 //this route is  not working
 
-router.get("/profile", async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.session.user.id, {
-            include: [{ model: Post }],
-        });
-        const user = userData.get({ plain: true });
-        res.render("profile", {
-            ...user,
-            logged_in: true
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+// router.get("/profile", async (req, res) => {
+//     try {
+//         const userData = await User.findByPk(req.session.user.id, {
+//             include: [{ model: Post }],
+//         });
+//         const user = userData.get({ plain: true });
+//         res.render("profile", {
+//             ...user,
+//             logged_in: true
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 module.exports = router

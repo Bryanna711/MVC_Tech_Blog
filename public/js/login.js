@@ -1,6 +1,6 @@
 
 const logInHandler = async (event) => {
-    event.prevent.default();
+    // event.prevent.default();
 
     const email = document.querySelector("#email");
     const password = document.querySelector("#password");

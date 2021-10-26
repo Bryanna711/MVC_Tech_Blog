@@ -8,7 +8,7 @@ router.get("/", authorization, async (req, res) => {
             user_id: req.session.user_id
         },
     });
-    const posts = postData.map(post => post.get({ plain: true }));
+    const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render("allposts", {
         layout: "profile",
@@ -17,7 +17,7 @@ router.get("/", authorization, async (req, res) => {
     })
 });
 
-router.get("post/:id", authorization, async (req, res) => {
+router.get("/edit/:id", authorization, async (req, res) => {
     try {
         const postData = await Post.findOne({
             where: {

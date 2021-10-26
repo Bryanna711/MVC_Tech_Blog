@@ -12,9 +12,9 @@ router.post("/", async (req, res) => {
         });
 
         req.session.save(() => {
-            req.session.user_id = newUserData.user_id;
-            req.session.user_name = newUserData.user_name;
-            req.session.user_email = newUserData.user_email;
+            req.session.user_id = newUserData.id;
+            req.session.user_name = newUserData.name;
+            req.session.user_email = newUserData.email;
             req.session.logged_in = true;
 
             res.status(200).json(newUserData);
@@ -42,8 +42,8 @@ router.post("/login", async (req, res) => {
             return;
         };
         req.session.save(() => {
-            req.session.user_id = userData.user_id;
-            req.session.user_email = userData.user_email;
+            req.session.user_id = userData.id;
+            req.session.user_email = userData.email;
             req.session.logged_in = true;
 
             res.status(200).json(userData);
