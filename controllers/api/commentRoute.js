@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Comment, Post } = require('../../models');
+const { Comment } = require('../../models');
 const authorization = require('../../utils/authorization')
 
 //Get Request on Comments
@@ -20,15 +20,6 @@ router.get("/", authorization, async (res, req) => {
 router.post("/", authorization, async (req, res) => {
     try {
         const commentData = await Comment.create({
-            // include: [
-            //     {
-            //         model: User,
-            //         attributes: ["name"],
-            //     },
-            //     {
-            //         model: Post,
-            //     }
-            // ],
             ...req.body,
             user_id: req.session.user_id
         });
@@ -43,15 +34,6 @@ router.put("/:id", authorization, async (req, res) => {
         const commentData = await Comment.update({
             ...req.body,
             user_id: req.session.id,
-            // include: [
-            //     {
-            //         model: User,
-            //         attributes: ["name"],
-            //     },
-            //     {
-            //         model: Post,
-            //     }
-            // ],
         });
         if (!commentData) {
             res.status(404).json({ message: "No comment with that id exists." });

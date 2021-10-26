@@ -8,7 +8,7 @@ router.get("/", authorization, async (req, res) => {
             user_id: req.session.user_id
         },
     });
-    const posts = postData.map((post) => post.get({ plain: true }));
+    const posts = postData.map(post => post.get({ plain: true }));
 
     res.render("allposts", {
         layout: "profile",
@@ -27,7 +27,7 @@ router.get("post/:id", authorization, async (req, res) => {
         });
         const posts = postData.get({ plain: true });
         res.render("singlepost", {
-            ...posts,
+            posts,
             // logged_in: req.session.logged_in
         });
     } catch (err) {

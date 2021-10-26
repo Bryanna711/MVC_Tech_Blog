@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
             req.session.user_email = newUserData.user_email;
             req.session.logged_in = true;
 
-            res.status(200).json(userData);
+            res.status(200).json(newUserData);
         });
     } catch (err) {
         res.status(500).json(err);
@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
 
 //Look at this one....
 router.post("/logout", async (req, res) => {
-    if (req.session = logged_in) {
+    if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
         });

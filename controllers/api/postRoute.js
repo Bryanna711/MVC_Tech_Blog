@@ -12,7 +12,6 @@ router.post("/", authorization, async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ["name"],
                 }],
 
         });
@@ -30,11 +29,12 @@ router.post("/", authorization, async (req, res) => {
 })
 
 //baseed on id of post
-router.put("/update/:id", authorization, async (req, res) => {
+router.put("/:id", authorization, async (req, res) => {
     try {
-        const postData = await Post.update({
-            ...req.body,
-            user_id: req.session.id,
+        const postData = await Post.update(req.body, {
+            where: {
+                id: req.params.id
+            },
             include: [
                 {
                     model: User,
@@ -61,7 +61,6 @@ router.delete("/:id", authorization, async (req, res) => {
         const postData = await Post.destory({
             where: {
                 id: req.params.id,
-                user_id: req.session.user_id,
             },
         });
         if (!postData) {
