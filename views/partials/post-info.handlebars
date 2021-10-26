@@ -1,7 +1,7 @@
 <div class="card w-100 border-success mb-3">
-  <div class="card-header bg-success  border-success">{{post.title}}</div>
-  <div class="card-body text-white">
-    <p class="card-text">{{post.content}}</p>
+  <div class="card-header bg-success  border-success"><span><a href="/post/{{id}}">{{title}}</span></div>
+  <div class="card-body text-dark">
+    <p class="card-text">{{content}}</p>
   </div>
-  <div class="card-footer bg-success border-success">Created by :{{post.user.name}} on {{formatDate post.date_created}}</div>
+  <div class="card-footer bg-success border-success">Created by :{{user.name}} on {{formatDate:date_created}}</div>
 </div>

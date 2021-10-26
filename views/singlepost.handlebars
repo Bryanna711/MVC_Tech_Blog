@@ -2,9 +2,12 @@
 
 {{#if logged_in}}
 <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Comment?" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-success" type="button" id="button-addon2">Comment</button>
+  <input id="comment_content" type="text" class="form-control" placeholder="Comment?" aria-label="Recipient's username"
+    aria-describedby="button-addon2">
+  <button class="btn btn-outline-success" type="button" id="commentBtn">Comment</button>
 </div>
 {{/if}}
 
 {{>comment-info post.comments}}
+
+<script src="../public/js/comment.js"></script>

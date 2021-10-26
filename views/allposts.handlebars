@@ -1,0 +1,11 @@
+<h2>Previous Posts</h2>
+{{#if posts.length}}
+{{#each posts as |post| }}
+{{>post_info post}}
+<button class="btn btn-outline-success" type="button" id="button-addon2"><a href="./updateComment.handlebars" Update
+        Post</button>
+        <button class="btn btn-outline-success" type="button" id="deleteBtn">Delete</button>
+        {{/each}}
+        {{/if}}
+
+        <script src="../public/js/deletepost.js"></script>

@@ -1,6 +1,6 @@
 
-module.exports ={
-formatDate: (date) => {
+module.exports = {
+  formatDate: (date) => {
     return date.toLocaleDateString();
   }
 };

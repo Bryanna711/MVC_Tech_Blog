@@ -1,0 +1,22 @@
+[
+    {
+    "user_id": 1,
+    "post_id": 2,
+    "comment_text": "Did you also work on the scare floor?"
+    },
+    {
+    "user_id": 2,
+    "post_id": 2,
+    "comment_text": "I did!"
+    },
+    {
+    "user_id": 3,
+    "post_id": 1,
+    "comment_text": "I also think magic is preferable to tech, I miss when it just happened with out so much thinking!"
+    },
+    {
+    "user_id": 2,
+    "post_id": 3,
+    "comment_text": "Oh bro - I think you made a mistake. Big Macs come from McDonald's, Imacs come from Apple..."
+    }
+]

@@ -1,24 +1,52 @@
 <div class="container">
     <div class="row justify-content-around">
         <div class="col">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Email" aria-label="Username">
-                <span class="input-group-text">@</span>
-                <input type="text" class="form-control" placeholder="gmail.com" aria-label="Server">
-                <input type="text" class="form-control" placeholder="Password" aria-label="Recipient">
-                <button class="btn btn-outline-success" type="button" id="button-addon2">Log In</button>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Login</h2>
+                </div>
+                <form id="logInForm" class="card-body">
+                    <div>
+                        <label for="email">Username</label>
+                        <input type="text" id="email" />
+                    </div>
+                    <div>
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" />
+                    </div>
+                    <button type="submit" id="login-btn" class="btn">Login</button>
+                </form>
             </div>
         </div>
 
-        <div class="col"></div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Username">
-            <span class="input-group-text">@</span>
-            <input type="text" class="form-control" placeholder="gmail.com" aria-label="Server">
-            <input type="text" class="form-control" placeholder="Password" aria-label="Recipient">
-            <input type="text" class="form-control" placeholder="Confirm Password" aria-label="Recipient">
-            <button class="btn btn-outline-success" type="button" id="button-addon2">Sign Up</button>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Sign Up</h2>
+                </div>
+                <form id="signUpForm" class="card-body">
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" id="userName" />
+                    </div>
+                    <div>
+                        <label for="email">Email : </label>
+                        <input type="text" id="signUpEmail" />
+                    </div>
+                    <div>
+                        <label for="password" class="form-label">Password :</label>
+                        <input type="password" id="signUpPass" />
+                    </div>
+                    <div>
+                        <label for="confirmPassword" class="form-label">Password :</label>
+                        <input type="password" id="confirmPass" />
+                    </div>
+                    <button type="submit" id="signUpBtn" class="btn">Sign Up</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-</div>
+
+<script src="../public/js/login.js"></script>
+<script src="../public/js/signup.js"></script>

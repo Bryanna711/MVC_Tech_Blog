@@ -2,18 +2,33 @@ const router = require('express').Router();
 const { User, Comment, Post } = require('../../models');
 const authorization = require('../../utils/authorization')
 
-router.post("/post/:id", authorization, async (req, res) => {
+//Get Request on Comments
+
+router.get("/", authorization, async (res, req) => {
+    try {
+        const commentData = await Comment.findAll();
+        const comments = commentData.map((post) => post.get({ plain: true }));
+        res.render("comment-info", {
+            ...comments,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+router.post("/", authorization, async (req, res) => {
     try {
         const commentData = await Comment.create({
-            include: [
-                {
-                    model: User,
-                    attributes: ["name"],
-                },
-                {
-                    model: Post,
-                }
-            ],
+            // include: [
+            //     {
+            //         model: User,
+            //         attributes: ["name"],
+            //     },
+            //     {
+            //         model: Post,
+            //     }
+            // ],
             ...req.body,
             user_id: req.session.user_id
         });
@@ -23,20 +38,20 @@ router.post("/post/:id", authorization, async (req, res) => {
     }
 });
 
-router.put("?????", authorization, async (req,res)=>{
-    try{
+router.put("/:id", authorization, async (req, res) => {
+    try {
         const commentData = await Comment.update({
             ...req.body,
-            user_id : req.session.id,
-            include: [
-                {
-                    model: User,
-                    attributes: ["name"],
-                },
-                {
-                    model: Post,
-                }
-            ],
+            user_id: req.session.id,
+            // include: [
+            //     {
+            //         model: User,
+            //         attributes: ["name"],
+            //     },
+            //     {
+            //         model: Post,
+            //     }
+            // ],
         });
         if (!commentData) {
             res.status(404).json({ message: "No comment with that id exists." });
@@ -48,9 +63,9 @@ router.put("?????", authorization, async (req,res)=>{
     }
 })
 
-router.delete("?????",authorization, async (req, res) => {
+router.delete("/:id", authorization, async (req, res) => {
     try {
-        const commentData = await Post.destory({
+        const commentData = await Comment.destory({
             where: {
                 id: req.params.id,
                 user_id: req.session.user_id,
