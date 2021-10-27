@@ -9,7 +9,7 @@ const newCommentHandler = async (event) => {
         window.location.toString().split('/').length - 1
     ];
 
-    const response = await fetch("/api/comments/new", {
+    const response = await fetch("/api/comment/new", {
         method: "POST",
         body: JSON.stringify({
             commentContent,
@@ -38,7 +38,7 @@ const updateCommentHandler = async (event) => {
     const commentId = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
-    const response = await fetch(`/api/comments/${id}`, {
+    const response = await fetch(`/api/comment/${id}`, {
         method: "PUT",
         body: JSON.stringify({
             updateCommentContent,
@@ -68,7 +68,7 @@ const deleteCommentHandler = async (event) => {
         window.location.toString().split('/').length - 1
     ];
 
-    const response = await fetch(`/api/comments/${id}`, {
+    const response = await fetch(`/api/comment/${id}`, {
         method: "DELETE",
         body: JSON.stringify({
             comment_id: id

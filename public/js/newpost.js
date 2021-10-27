@@ -7,7 +7,7 @@ const newPostHandler = (event) => {
     const title = document.querySelector("#title").value;
     const postContent = document.querySelector("#post_content").value;
 
-    const response = await fetch("/api/posts/", {
+    const response = await fetch("/api/post/", {
         method: "POST",
         body: JSON.stringify({
             title,

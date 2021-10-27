@@ -20,7 +20,7 @@ const logInHandler = async (event) => {
             document.location.replace("/profile");
         } else {
             let result = await response.json()
-            alert(result.message)
+            alert("Login Failed")
         }
     }
 };

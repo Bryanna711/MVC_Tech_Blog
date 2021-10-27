@@ -13,4 +13,4 @@ const logOutHandler = async () => {
 };
 
 
-document.querySelector("#logOut").addEventListener("submit", logOutHandler)
+document.querySelector("#logOut").addEventListener("click", logOutHandler)
