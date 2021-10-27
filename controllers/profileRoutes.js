@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post } = require('../models');
+const { Post, Comment, User } = require('../models');
 const authorization = require('../utils/authorization');
 
 router.get("/", authorization, async (req, res) => {
@@ -7,6 +7,7 @@ router.get("/", authorization, async (req, res) => {
         where: {
             user_id: req.session.user_id
         },
+        include: [{ model: User }]
     });
     const posts = postData.map((post) => post.get({ plain: true }));
 
@@ -23,6 +24,17 @@ router.get("/edit/:id", authorization, async (req, res) => {
             where: {
                 user_id: req.session.user_id
             },
+            include: [
+                {
+                    model: User,
+                },
+                {
+                    model: Comment,
+                    include: {
+                        model: User,
+                    }
+                },
+            ]
 
         });
         const posts = postData.get({ plain: true });
