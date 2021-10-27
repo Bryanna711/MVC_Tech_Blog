@@ -10,7 +10,7 @@ router.get("/", authorization, async (req, res) => {
     });
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render("allposts", {
+    res.render("homepage", {
         layout: "profile",
         posts,
         // logged_in: req.session.logged_in
@@ -27,6 +27,7 @@ router.get("/edit/:id", authorization, async (req, res) => {
         });
         const posts = postData.get({ plain: true });
         res.render("singlepost", {
+            layout: "profile",
             posts,
             // logged_in: req.session.logged_in
         });
